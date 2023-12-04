@@ -10,7 +10,7 @@ npm install
 npm run dev
 ```
 
-zip:
+zip:  
 [download](https://github.com/Coordinate-Cat/local-image-viewer/archive/refs/heads/main.zip)
 
 ## 2. Add images
