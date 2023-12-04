@@ -12,6 +12,7 @@
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-photo-view": "^1.2.3",
     "react-slideshow-image": "^4.3.0"
   },
   "devDependencies": {

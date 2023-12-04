@@ -3,6 +3,8 @@ import { GetStaticProps } from "next";
 import Image from "next/image";
 
 import { getImagesList, ImageInfo } from "@/utils/lib/images";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 interface ImagesPageProps {
   images: ImageInfo[];
@@ -23,7 +25,7 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
             setMenu(!menu);
           }} // クリック時にメニューを表示
         ></button>
-        <div className="flex gap-3">
+        <div className="flex gap-3 hover:bg-slate-600 px-2 transition ease-in-out delay-350 duration-300">
           {[...Array(6)].map((_, n) => (
             <button
               key={n}
@@ -42,17 +44,21 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
         style={{ gridTemplateColumns: `repeat(${numCols}, minmax(0, 1fr))` }}
         className="grid relative -mt-[16px]"
       >
-        {images.map((image) => (
-          <div key={image.fileName}>
-            <Image
-              className="lazy w-full h-full object-cover"
-              src={image.filePath}
-              alt={image.fileName}
-              width={5000}
-              height={5000}
-            />
-          </div>
-        ))}
+        <PhotoProvider className="border-2" maskOpacity={0.5}>
+          {images.map((image) => (
+            <div key={image.fileName}>
+              <PhotoView src={image.filePath}>
+                <Image
+                  className="lazy w-full h-full object-cover"
+                  src={image.filePath}
+                  alt={image.fileName}
+                  width={5000}
+                  height={5000}
+                />
+              </PhotoView>
+            </div>
+          ))}
+        </PhotoProvider>
       </div>
     </div>
   );
