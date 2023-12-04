@@ -45,11 +45,11 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
         {images.map((image) => (
           <div key={image.fileName}>
             <Image
-              className="lazy w-full object-cover"
+              className="lazy w-full h-full object-cover"
               src={image.filePath}
               alt={image.fileName}
-              width={100}
-              height={100}
+              width={5000}
+              height={5000}
             />
           </div>
         ))}
