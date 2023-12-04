@@ -5,6 +5,7 @@
 git:
 ```
 git clone git@github.com:Coordinate-Cat/local-image-viewer.git
+cd local-image-viewer
 npm install
 npm run dev
 ```
