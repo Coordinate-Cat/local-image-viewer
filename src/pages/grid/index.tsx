@@ -26,7 +26,7 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
           }} // クリック時にメニューを表示
         ></button>
         <div className="flex gap-3 hover:bg-slate-600 px-2 transition ease-in-out delay-350 duration-300">
-          {[...Array(9)].map((_, n) => (
+          {[...Array(20)].map((_, n) => (
             <button
               key={n}
               className="text-[#fff] text-xs"
@@ -49,7 +49,7 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
             <div key={image.fileName}>
               <PhotoView src={image.filePath}>
                 <Image
-                  className="lazy w-full h-full object-cover"
+                  className="lazy w-full h-full object-cover cursor-pointer"
                   src={image.filePath}
                   alt={image.fileName}
                   width={5000}
