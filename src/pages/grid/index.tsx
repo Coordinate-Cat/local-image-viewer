@@ -26,7 +26,7 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
           }} // クリック時にメニューを表示
         ></button>
         <div className="flex gap-3 hover:bg-slate-600 px-2 transition ease-in-out delay-350 duration-300">
-          {[...Array(6)].map((_, n) => (
+          {[...Array(9)].map((_, n) => (
             <button
               key={n}
               className="text-[#fff] text-xs"
