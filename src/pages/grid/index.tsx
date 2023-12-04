@@ -14,6 +14,15 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
   // 状態管理用の変数とセッター
   const [numCols, setNumCols] = useState(5); // 初期値は2
   const [menu, setMenu] = useState(false); // 初期値はfalse
+  const [ascending, setAscending] = useState(true); // 初期値はtrue
+
+  const sortedImages = [...images].sort((a, b) => {
+    if (ascending) {
+      return a.fileName.localeCompare(b.fileName);
+    } else {
+      return b.fileName.localeCompare(a.fileName);
+    }
+  });
 
   return (
     <div>
@@ -25,11 +34,17 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
             setMenu(!menu);
           }} // クリック時にメニューを表示
         ></button>
-        <div className="flex gap-3 hover:bg-slate-600 px-2 transition ease-in-out delay-350 duration-300">
+        <div className="flex">
+          <button
+            onClick={() => setAscending(!ascending)}
+            className="text-xs mr-4 hover:bg-slate-600 w-6 justify-center transition ease-in-out delay-350 duration-300"
+          >
+            ↓↑
+          </button>
           {[...Array(20)].map((_, n) => (
             <button
               key={n}
-              className="text-[#fff] text-xs"
+              className="flex gap-3 text-[#fff] text-xs hover:bg-slate-600 w-4 justify-center transition ease-in-out delay-350 duration-300"
               onClick={() => {
                 setNumCols(n + 1);
               }} // クリック時に列数を更新
@@ -45,7 +60,7 @@ const ImagesPage: FC<ImagesPageProps> = ({ images }) => {
         className="grid relative -mt-[16px]"
       >
         <PhotoProvider className="border-2" maskOpacity={0.5}>
-          {images.map((image) => (
+          {sortedImages.map((image) => (
             <div key={image.fileName}>
               <PhotoView src={image.filePath}>
                 <Image
